@@ -1,0 +1,94 @@
+<!-- Modal -->
+<div class="modal fade" id="addPlaceModal" tabindex="-1" role="dialog" aria-labelledby="addPlaceModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title text-center" id="addPlaceModalLabel">Add a Business Manually</h4>
+            </div>
+            <div class="modal-body">
+                <form method="POST">
+                    <div class="text-left">
+                        <label>Business name <small>*Required</small></label><br>
+                        <input type="text" class="form-control" id ="placeName" placeholder="Number Two Labs"><br>
+                        <ul id="nameRequired" style="display:none"><li>This business needs a name!</li></ul>
+                        <label>Address</label><br>
+                        <input type="text" class="form-control" id="placeAddress" placeholder="1234 Sesame Street"><br>
+                        <label>City</label><br>
+                        <input type="text" class="form-control" id="placeCity" placeholder="San Francisco"><br>
+                        <div id="manualResult"></div>
+                    </div>
+
+                    <div class ="modal-footer">
+                        <button type="button" class="btn btn-warning" onclick="addPlaceToDatabase()">Add place</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <!--<button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#newModal">Now rate it!</button>-->
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Yelp modal-->
+<div class="modal fade" id="yelpModal" tabindex="-1" role="dialog" aria-labelledby="yelpModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="background-color: #fafafa">
+            <div class="modal-header text-center">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h3 class="modal-title" id="yelpModalLabel">Add a Place from Yelp</h3>
+            </div>
+            <div class="modal-body text-center">
+                <script src="../static/src/jquery-1.11.2.min.js"></script>
+                <script src="../static/js/ajax.js"></script>
+
+                <!--<h3>Add a place from Yelp</h3>-->
+                <div class="btn-group">
+                    <!--Change value of yelpIsLocation to determine type of search-->
+                    <button type="button" id="yelpIsNear" class="active btn btn-default" name="inputAddress" value="yes" onclick="document.getElementById('yelpIsLocation').value='no';returnUserPosition();"><b>Nearby Places</b></button>
+                    <button type="button" id="yelpIsLocation" class="btn btn-default" name="inputAddress" value="no" onclick="this.value='yes';enableLocationSearch();"><b>Search by address</b></button><br>
+                </div>
+
+                <div id="userCoord" style="display:block;">
+                    <p><small id="placeholderWhileGettingLocation"></small></p>
+                    <p><span id="userLat" style="display:none;"></span>
+                    <span id="userLong" style="display:none;"></span></p>
+                </div>
+
+                <form id="ajaxForm">
+{#                    {% csrf_token %}#}
+                    <!--User provided location-->
+                    <div class="col-lg-6 col-lg-offset-3 col-sm-8 col-sm-offset-2 col-xs-12">
+                        <input type="text" class="form-control" placeholder="E.g. 200 California St" id="ajaxLocation"><br>
+                        <input type="text" class="form-control" placeholder="E.g. dinner" id="ajaxTerm">
+                    </div>
+                    <!--Coordinates stay hidden-->
+                    <input id="yelpGeoCoordLat" type="text" style="display:inline-block;visibility:hidden;">
+                    <input id="yelpGeoCoordLong" type="text" style="display:inline-block;visibility:hidden;">
+                </form>
+                <br>
+                <div class="col-lg-12">
+                    <button type="button" class="btn btn-danger btn-lg" onclick="yelp_ajax();">Search on Yelp!</button>&nbsp;
+                </div>
+                <p></p>
+                <br>
+                <br>
+                <div id="yelpOutput"></div>
+
+                <script src="../static/js/yelp_search.js"></script>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning" data-dismiss="modal" data-toggle="modal" data-target="#addPlaceModal">Can't find your toilet? Add it manually!</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--DELETE-->
+     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>-->
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <!--<script src="../static/src/bootstrap/js/bootstrap.min.js"></script>-->

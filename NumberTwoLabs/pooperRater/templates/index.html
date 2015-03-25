@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PoopeRater by #2 Labs</title>
+
+  {% include 'stylesheet.html' %}
+
+</head>
+
+<body style="background-color:rgb(226, 226, 226)">
+  {% include 'navbar.html' %}
+
+        <div class="top">
+          <div class="container-fluid">
+                    {% block content2 %}{% endblock content2 %}
+          </div>
+        </div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="text-right align-right">
+        Made with <span class="fa fa-heart" style="color: crimson;"></span> by NumberTwoLabs.com
+    </div>
+  </div>
+</footer>
+
+
+  {% include 'javascript.html' %}
+</body>
+</html>
+
+
