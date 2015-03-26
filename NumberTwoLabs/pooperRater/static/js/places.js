@@ -277,7 +277,7 @@ var DatabaseSearch = React.createClass({
                             aria-describedby="sizing-addon1"
                             className="form-control input-lg"
                             type="text"
-                            placeholder="Search for a toilet... (e.g Number Two Labs 123 Sesame St)"
+                            placeholder="Need to Find a Toilet ... (e.g Number Two Labs or 1600 Pennsylvania Ave)"
                             value={message}
                             onChange={this.handleChange} />
                     </div>
