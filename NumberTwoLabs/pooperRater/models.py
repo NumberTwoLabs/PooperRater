@@ -132,7 +132,7 @@ class Rating(models.Model):
 
 
 class Vote(models.Model):
-    vote_owner = models.ForeignKey(User)
+    vote_owner = models.ForeignKey(User, default=False)
     rating_vote = models.ForeignKey(Rating)
     upvote = models.BooleanField(default=False)
     downvote = models.BooleanField(default=False)
