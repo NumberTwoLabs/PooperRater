@@ -145,9 +145,11 @@ var VoteForm = React.createClass({
       var upvote = true;
       var downvote = false;
       var ratingID = this.props.onVoteSubmit.__reactBoundContext.props.ratingID;
+      var userID = GlobalUserID;
 
       this.props.onVoteSubmit({
           rating_vote: ratingID,
+          vote_owner: userID,
           upvote: upvote,
           downvote: downvote
       });
@@ -171,8 +173,10 @@ var VoteForm = React.createClass({
     var upvote = false;
     var downvote = true;
     var ratingID = this.props.onVoteSubmit.__reactBoundContext.props.ratingID;
+    var userID = GlobalUserID;
 
     this.props.onVoteSubmit({   rating_vote: ratingID,
+                                vote_owner: userID,
                                 upvote: upvote,
                                 downvote: downvote });
 
@@ -185,8 +189,18 @@ var VoteForm = React.createClass({
               <form className="voteForm" onSubmit={this.handleSubmit}>
                 <div class="row">
                     <div className="col-xs-12 col-sm-12 col-lg-12 text-center">
-                        <div className="col-lg-2 col-sm-4 col-xs-6"><a type="text" placeholder="upvote" ref="upvote" onClick = {this.handleUpvote}><span className="glyphicon glyphicon-thumbs-up"> {this.props.upVoteCount}</span></a></div>
-                        <div className="col-lg-2 col-sm-4 col-xs-6"><a type="text" placeholder="downvote" ref="downvote" onClick = {this.handleDownvote}><span className="glyphicon glyphicon-thumbs-down"> {this.props.downVoteCount}</span></a></div>
+                        <div className="col-lg-2 col-sm-4 col-xs-6">
+                            <a type="text"
+                                placeholder="upvote"
+                                ref="upvote"
+                                onClick = {this.handleUpvote}>
+                                <span className="glyphicon glyphicon-thumbs-up"> {this.props.upVoteCount}</span></a></div>
+                        <div className="col-lg-2 col-sm-4 col-xs-6">
+                            <a type="text"
+                                placeholder="downvote"
+                                ref="downvote"
+                                onClick = {this.handleDownvote}>
+                                <span className="glyphicon glyphicon-thumbs-down"> {this.props.downVoteCount}</span></a></div>
                     </div>
                 </div>
               </form>
