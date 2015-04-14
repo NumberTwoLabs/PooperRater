@@ -92,8 +92,6 @@ WSGI_APPLICATION = 'NumberTwoLabs.wsgi.application'
 # LOGIN_REDIRECT_URL = '/places/#places/'
 LOGIN_REDIRECT_URL = '/login_redirect/'
 
-
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
@@ -107,7 +105,7 @@ DATABASES = {
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, *MEDIA_URL.strip('/').split('/'))
-STATIC_ROOT = os.path.join(BASE_DIR, '/static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': ('rest_framework.filters.DjangoFilterBackend',)
