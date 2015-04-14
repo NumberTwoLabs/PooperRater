@@ -132,13 +132,16 @@ class Rating(models.Model):
 
 
 class Vote(models.Model):
-    # vote_owner = models.ForeignKey(User)
+    vote_owner = models.ForeignKey(User)
     rating_vote = models.ForeignKey(Rating)
     upvote = models.BooleanField(default=False)
     downvote = models.BooleanField(default=False)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        unique_together = ('rating_vote', 'vote_owner')
 
     def __unicode__(self):
         return u"{}".format(self.rating_vote)
